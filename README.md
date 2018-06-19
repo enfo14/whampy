@@ -25,12 +25,12 @@ The execution of the program is as follows:
 python3 wham.py [-h] [-s] [-i INPUT] [-o OUTPUT]
 ```
 
-where the "INPUT" file is a plain text file with the format as specified
-in "example.in".  The  trajectory  files sourced from the paths found in 
+where the `INPUT` file is a plain text file with the format as specified
+in `example/example.in`.  The  trajectory  files sourced from the paths found in 
 the input file are assumed to be in the two-column  NAMD .traj format as 
-shown in the "example.traj" file. 
+shown in the `example/example.traj` file. 
 
-For more information about the options, the [-h] optional flag brings up
+For more information about the options, the `[-h]` optional flag brings up
 the help text.
 
 ## Test execution
@@ -40,9 +40,11 @@ the C2-C3 dihedral angle of butane is provided for testing purposes.
 
 To execute the test, the following command suffices:
 
-$ python3 wham.py -i example/input/example.in -o example/output/test
+``` shell
+python3 wham.py -i example/input/example.in -o example/output/test
+```
 
-The results of the PMF will then be stored in example/output/test.pmf,
+The results of the PMF will then be stored in `example/output/test.pmf`,
 with the reaction coordinate in the first column, the PMF value in the
 second column, and the standard error of the PMF value in the third.
 
