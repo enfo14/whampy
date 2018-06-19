@@ -9,9 +9,9 @@ __Disclaimer:__ _program in development_
 
 * `python3.x` must be installed.
 * The following `python` packages must be installed:
-  ** `numpy`
-  ** `scipy`
-  ** `matplotlib`
+  * `numpy`
+  * `scipy`
+  * `matplotlib`
 * These can be installed with `pip`
 
 ## `whampy` instructions
