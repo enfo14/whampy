@@ -1,0 +1,27 @@
+# hist_min = -180
+# hist_max = 180
+# num_bins = 90
+# period = 360.0
+# tol = 1e-9
+# temp = 300.0
+# first = 100
+
+example/input/window1.traj  -180.0  0.02
+example/input/window2.traj  -160.0  0.02
+example/input/window3.traj  -140.0  0.02
+example/input/window4.traj  -120.0  0.02
+example/input/window5.traj  -100.0  0.02
+example/input/window6.traj   -80.0  0.02
+example/input/window7.traj   -60.0  0.02
+example/input/window8.traj   -40.0  0.02
+example/input/window9.traj   -20.0  0.02
+example/input/window10.traj    0.0  0.02
+example/input/window11.traj   20.0  0.02
+example/input/window12.traj   40.0  0.02
+example/input/window13.traj   60.0  0.02
+example/input/window14.traj   80.0  0.02
+example/input/window15.traj  100.0  0.02
+example/input/window16.traj  120.0  0.02
+example/input/window17.traj  140.0  0.02
+example/input/window18.traj  160.0  0.02
+example/input/window19.traj  180.0  0.02

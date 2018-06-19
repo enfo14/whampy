@@ -1,0 +1,132 @@
+
+Info: Running whampy v1.1
+Info: Execution at 18-05-17 15:47:47
+Info: Working in dir /data/proserpina/enric/GLUT1/UMBRELLA_SAMPLING/ANALYSIS
+Info: command-line call: $ wham.py -i example/example.in -o example/output/example
+
+Using example/example.in as metadata file
+Reading simulation parameters...	Done
+	KT           0.59616123
+	PERIOD       360.0
+	TOL          1e-09
+	HIST_MAX     180.0
+	HIST_MIN     -180.0
+	FIRST        100.0
+	PERIODIC     True
+	BIN_WIDTH    4.0
+	TEMP         300.0
+	NUM_BINS     90.0
+	NUM_WINDOWS  19
+
+Reading trajectory paths...	Done
+Setting up data structures...	Done
+Reading trajectory files...
+Reading window 1 of 19
+	Trajectory contains 4901 points
+	2455.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 2 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 3 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 4 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 5 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 6 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 7 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 8 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 9 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 10 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 11 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 12 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 13 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 14 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 15 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 16 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 17 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 18 of 19
+	Trajectory contains 4901 points
+	4901.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Reading window 19 of 19
+	Trajectory contains 4901 points
+	2446.0 of 4901 points inside histogram bounds
+	Pruning empty bins from histogram
+
+Minimizing log-likelihood A...	Done
+Computing probability distribution and free energy...	Done
+Rescaling probability distribution and free energy...	Done
+Minimizing log-likelihood A...	Done
+Computing probability distribution and free energy...	Done
+Rescaling probability distribution and free energy...	Done
+Minimizing log-likelihood A...	Done
+Computing probability distribution and free energy...	Done
+Rescaling probability distribution and free energy...	Done
+Minimizing log-likelihood A...	Done
+Computing probability distribution and free energy...	Done
+Rescaling probability distribution and free energy...	Done
+WHAM calculation complete
+--- Runtime: 16.99993395805359 seconds ---
