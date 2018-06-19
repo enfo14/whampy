@@ -9,9 +9,9 @@ __Disclaimer:__ _program in development_
 
 * `python3.x` must be installed.
 * The following `python` packages must be installed:
-* * `numpy`
-* * `scipy`
-* * `matplotlib`
+  ** `numpy`
+  ** `scipy`
+  ** `matplotlib`
 * These can be installed with `pip`
 
 ## `whampy` instructions
@@ -21,7 +21,9 @@ the probability distribution in 1D.
 
 The execution of the program is as follows:
 
-$ python3 wham.py [-h] [-s] [-i INPUT] [-o OUTPUT]
+```shell
+python3 wham.py [-h] [-s] [-i INPUT] [-o OUTPUT]
+```
 
 where the "INPUT" file is a plain text file with the format as specified
 in "example.in".  The  trajectory  files sourced from the paths found in 
