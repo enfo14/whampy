@@ -1,11 +1,21 @@
-# whampy
+# `whampy`
 whampy is a python3 script that performs a WHAM calculation on umbrella sampling datasets in order to obtain a potential of mean force.
-########################################################################
-# WHAMPY instructions
 
-*** program in development ***
+## Getting Started
 
-The "whampy" program computes the potential of mean force of an umbrella
+### Prerequisites
+
+__Disclaimer:__ _program in development_
+
+* `python3.x` must be installed.
+* The following `python` packages must be installed:
+* * `numpy`
+* * `scipy`
+* * `matplotlib`
+* These can be installed with `pip`
+
+## `whampy` instructions
+The whampy" program computes the potential of mean force of an umbrella
 sampling simulation using a minimization of a log-likelihood function of
 the probability distribution in 1D. 
 
@@ -21,8 +31,7 @@ shown in the "example.traj" file.
 For more information about the options, the [-h] optional flag brings up
 the help text.
 
-########################################################################
-# Test execution
+## Test execution
 
 A simple calculation of the potential of mean force of the rotation of
 the C2-C3 dihedral angle of butane is provided for testing purposes.
