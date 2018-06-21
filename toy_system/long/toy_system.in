@@ -1,0 +1,28 @@
+# hist_min = 0
+# hist_max = 360
+# num_bins = 90
+# period = 360.0
+# tol = 1e-9
+# temp = 298.15
+# first = 0
+# num_mc_runs = 10
+
+toy_system/long/window0.traj    0.0    0.01
+toy_system/long/window1.traj   20.0    0.01
+toy_system/long/window2.traj   40.0    0.01
+toy_system/long/window3.traj   60.0    0.01
+toy_system/long/window4.traj   80.0    0.01
+toy_system/long/window5.traj  100.0    0.01
+toy_system/long/window6.traj  120.0    0.01
+toy_system/long/window7.traj  140.0    0.01
+toy_system/long/window8.traj  160.0    0.01
+toy_system/long/window9.traj  180.0    0.01
+toy_system/long/window10.traj  200.0    0.01
+toy_system/long/window11.traj  220.0    0.01
+toy_system/long/window12.traj  240.0    0.01
+toy_system/long/window13.traj  260.0    0.01
+toy_system/long/window14.traj  280.0    0.01
+toy_system/long/window15.traj  300.0    0.01
+toy_system/long/window16.traj  320.0    0.01
+toy_system/long/window17.traj  340.0    0.01
+toy_system/long/window18.traj  360.0    0.01

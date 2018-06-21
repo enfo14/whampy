@@ -1,5 +1,6 @@
 # `whampy`
 whampy is a python3 script that performs a WHAM calculation on umbrella sampling datasets in order to obtain a potential of mean force.
+<<<<<<< HEAD
 
 ## Getting Started
 
@@ -53,3 +54,6 @@ column at the y-axis will produce results equivalent to those contained
 in the provided .png file.
 
 
+=======
+The 'montecarlo' branch includes a modified version of the code that also generates a dataset with Monte Carlo, useful for testing.
+>>>>>>> montecarlo
