@@ -13,14 +13,14 @@ from wham.init import update_progress
 from scipy import optimize
 from matplotlib import pyplot as plt
 
+
 def calc_bias(spring, loc, coor):
     dx = coor - loc
     if sim.periodic:
         period = sim.period
-        dx = abs(dx)
-        if dx > period/2.0:
-            dx -= period
-    return 0.5*spring*dx**2
+        dx = np.abs(dx)
+        dx = np.where(dx > (period / 2.0), dx - period, dx)
+    return 0.5 * spring * np.square(dx)
 
 
 def function_A(g, *args):
@@ -32,22 +32,22 @@ def function_A(g, *args):
     bin_width = sim.bin_width
     kT = sim.kT
 
-    first = sum(winlist[i].num_points * g[i] for i in range(num_windows))
+    loc = np.array([winlist[i].loc for i in range(num_windows)])
+    spring = np.array([winlist[i].spring for i in range(num_windows)])
+    num_points = np.array([winlist[i].num_points for i in range(num_windows)])
+
+    first = np.dot(num_points, g)
     second = 0.0
 
     for l in range(num_bins):
         coor = data[l, 0]
-        Ml = data[l,1] 
+        Ml = data[l, 1]
+        if Ml > 0:
+            bias = calc_bias(spring, loc, coor)
+            denom = np.dot(num_points, np.exp(-bias / kT + g))
+            second += Ml * np.log(Ml / denom)
 
-        bias = [calc_bias(winlist[i].spring, winlist[i].loc, coor)
-                for i in range(num_windows)]
-        denom = sum(winlist[i].num_points * np.exp(-bias[i]/kT + g[i])
-                    for i in range(num_windows))
-
-        if Ml>0:
-            second += Ml * np.log(Ml/denom)
-
-    val = (first + second)*-1
+    val = (first + second) * -1
     return val
 
 
@@ -63,19 +63,19 @@ def gradient_A(g, *args):
     grad_A = np.zeros(num_windows)
     denom = np.zeros(num_bins)
 
+    loc = np.array([winlist[i].loc for i in range(num_windows)])
+    spring = np.array([winlist[i].spring for i in range(num_windows)])
+    num_points = np.array([winlist[i].num_points for i in range(num_windows)])
+
     for l in range(num_bins):
-        bias  = [calc_bias(winlist[j].spring, winlist[j].loc, data[l,0])
-                 for j in range(num_windows)]
-        denom[l] = sum(winlist[j].num_points * np.exp(-bias[j]/kT + g[j])
-                       for j in range(num_windows))
+        bias = calc_bias(spring, loc, data[l, 0])
+        denom[l] = np.dot(num_points, np.exp(-bias / kT + g))
 
     denom = np.array(denom)
     for i in range(num_windows):
-        bias = [calc_bias(winlist[i].spring, winlist[i].loc, data[l,0])
-                for l in range(num_bins)]
-        summat = sum(data[l,1]*np.exp(-bias[l]/kT)/denom[l]
-                     for l in range(num_bins))
-        grad_A[i] = winlist[i].num_points * (np.exp(g[i])*summat - 1)
+        bias = calc_bias(winlist[i].spring, winlist[i].loc, data[:, 0])
+        summat = np.dot(data[:, 1], np.exp(-bias / kT) / denom)
+        grad_A[i] = winlist[i].num_points * (np.exp(g[i]) * summat - 1)
 
     return grad_A
 
@@ -92,16 +92,17 @@ def calc_free(g, winlist, data):
 
     prob = np.zeros(num_bins)
     free = np.zeros(num_bins)
-    
+
+    loc = np.array([winlist[i].loc for i in range(num_windows)])
+    spring = np.array([winlist[i].spring for i in range(num_windows)])
+    num_points = np.array([winlist[i].num_points for i in range(num_windows)])
+
     for l in range(num_bins):
-        coor = data[l,0]
-        Ml = data[l,1]
-        bias = [calc_bias(winlist[i].spring, winlist[i].loc, coor)
-                for i in range(num_windows)]
-        denom = sum(winlist[i].num_points * np.exp(-bias[i]/kT + g[i])
-                    for i in range(num_windows))
-        prob[l] = Ml/denom
-        free[l] = -kT * np.log(prob[l]/bin_width)
+        Ml = data[l, 1]
+        bias = calc_bias(spring, loc, data[l, 0])
+        denom = np.dot(num_points, np.exp(-bias / kT + g))
+        prob[l] = Ml / denom
+        free[l] = -kT * np.log(prob[l] / bin_width)
     print("\tDone")
 
     string = "Rescaling probability distribution and free energy..."
@@ -114,7 +115,7 @@ def calc_free(g, winlist, data):
     return prob, free, bin_min
 
 
-def minimization(windows, data): 
+def minimization(windows, data):
 
     tol = sim.tol
 
@@ -128,27 +129,28 @@ def minimization(windows, data):
         arglist = (windows, data)
 
         g_minim = optimize.minimize(
-                function_A, g0, 
-                args=arglist, 
-                jac=gradient_A, 
-                method="BFGS", 
-                options={"gtol": tol})
+            function_A,
+            g0,
+            args=arglist,
+            jac=gradient_A,
+            method="BFGS",
+            options={"gtol": tol},
+        )
 
         if g_minim.get("success"):
             print("\tDone")
             g = g_minim.get("x")
             g -= g[0]
             converged = True
-        elif tol < g_minim.get("fun")/1e4:
+        elif tol < g_minim.get("fun") / 1e4:
             tol *= 10
         else:
-            text = ("Minimization failed for all acceptable tolerances."
-                    "Stopping...")
+            text = "Minimization failed for all acceptable tolerances." "Stopping..."
             print(text)
             sys.exit()
-    
+
     for i in range(len(g)):
         windows[i].g = g[i]
-    
+
     min_time = time.time() - start_time
     return g, min_time
